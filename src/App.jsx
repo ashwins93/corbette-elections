@@ -26,7 +26,10 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-light-blue-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl"></div>
         <div className="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
           <h1 className="text-3xl text-cyan-600">Corbette House</h1>
-          <h2 className="text-2xl text-cyan-600">Know Your Candidates</h2>
+          <h2 className="mt-1 text-2xl text-cyan-600">
+            Deputy Secretary Election
+          </h2>
+          <div className="mt-2 text-cyan-600">Know your candidates</div>
           <div className="mt-3">
             <AnimatePresence exitBeforeEnter initial={false}>
               <Switch location={location} key={location.pathname}>
@@ -62,11 +65,6 @@ function App() {
                             className="flex justify-between"
                           >
                             <div className="z-10">{candidate.name}</div>
-                            <div className="bg-cyan-500 text-white text-xs rounded-full p-1 w-10 text-center">
-                              {candidate.position.includes("Web")
-                                ? "Web"
-                                : "Sec"}
-                            </div>
                           </Link>
                         </motion.li>
                       ))}
@@ -103,25 +101,22 @@ function App() {
                           <div className="space-y-6 mt-7">
                             <h2 className="text-3xl uppercase text-cyan-600 flex justify-between items-center">
                               <span>{selected.name}</span>
-
-                              <span className="ml-1 text-sm bg-cyan-600 text-white p-2 rounded-full uppercase tracking-wider ">
-                                {selected.position.includes("Web")
-                                  ? "Web Admin"
-                                  : "Secretary"}
-                              </span>
                             </h2>
-                            {selected.video && (
-                              <div className="relative aspect-w-16 aspect-h-9">
-                                <YTPlayer
-                                  src={selected.video}
-                                  className="rounded-lg shadow-lg absolute inset-0"
-                                />
-                              </div>
-                            )}
                             <div className="text-xl text-cyan-800">
                               Why should you vote for me?
                             </div>
                             <div className="text-justify">{selected.pitch}</div>
+                            <div className="space-x-2">
+                              {selected.links.map((link) => (
+                                <a
+                                  key={link.url}
+                                  className="inline-block bg-cyan-500 p-3 text-white rounded-lg shadow-lg text-sm tracking-wider uppercase transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
+                                  href={link.url}
+                                >
+                                  {link.title}
+                                </a>
+                              ))}
+                            </div>
                           </div>
                         )}
                       </motion.div>
@@ -132,7 +127,7 @@ function App() {
             </AnimatePresence>
             <div className="mt-10 text-center">
               <a
-                href="https://forms.gle/KwZC5JH2rdibVJ7L6"
+                href="https://forms.gle/6RApf5nwQrZecvc59"
                 className="inline-block bg-cyan-500 p-3 text-white rounded-lg shadow-lg text-sm tracking-wider uppercase transition transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500"
                 target="_blank"
               >
